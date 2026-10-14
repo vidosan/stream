@@ -1,0 +1,55 @@
+# -*- mode: python ; coding: utf-8 -*-
+
+
+a = Analysis(
+    ['stream.py'],
+    pathex=[],
+    binaries=[],
+    datas=[('stream_project/servers.json', 'stream_project')],
+    hiddenimports=[
+        'stream_project',
+        'stream_project.capture',
+        'stream_project.capture.dxcam_capture',
+        'stream_project.capture.mss_capture',
+        'stream_project.capture.selftest',
+        'stream_project.control',
+        'stream_project.control.events',
+        'stream_project.control.forward',
+        'stream_project.control.win32',
+        'stream_project.web',
+        'stream_project.web.app',
+        'stream_project.web.pages',
+        'flask_sock',
+        'simple_websocket',
+        'wsproto',
+        'wsproto.extensions',
+    ],
+    hookspath=[],
+    hooksconfig={},
+    runtime_hooks=[],
+    excludes=[],
+    noarchive=False,
+    optimize=0,
+)
+pyz = PYZ(a.pure)
+
+exe = EXE(
+    pyz,
+    a.scripts,
+    a.binaries,
+    a.datas,
+    [],
+    name='stream',
+    debug=False,
+    bootloader_ignore_signals=False,
+    strip=False,
+    upx=True,
+    upx_exclude=[],
+    runtime_tmpdir=None,
+    console=True,
+    disable_windowed_traceback=False,
+    argv_emulation=False,
+    target_arch=None,
+    codesign_identity=None,
+    entitlements_file=None,
+)
